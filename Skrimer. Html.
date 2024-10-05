@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Скример</title>
+    <style>
+        body {
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: black;
+            color: white;
+            flex-direction: column;
+        }
+        img {
+            max-width: 100%;
+            max-height: 100%;
+            display: block;
+        }
+        #close-btn {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            padding: 10px 20px;
+            background-color: red;
+            border: none;
+            color: white;
+            cursor: pointer;
+            font-size: 16px;
+        }
+    </style>
+</head>
+<body>
+    <audio id="scary-sound" src="scary_sound.mp3" preload="auto"></audio>
+    <img id="scary-image" src="scary_image.jpg" alt="Скример">
+    <button id="close-btn">Закрыть</button>
+    
+    <script>
+        window.onload = function() {
+            var audio = document.getElementById("scary-sound");
+            audio.volume = 1.0; // Максимальная громкость
+            audio.play();
+        };
+
+        document.getElementById("close-btn").onclick = function() {
+            var audio = document.getElementById("scary-sound");
+            audio.pause(); // Остановить звук
+            audio.currentTime = 0; // Вернуться в начало
+            document.getElementById("scary-image").style.display = 'none'; // Скрыть изображение
+            this.style.display = 'none'; // Скрыть кнопку
+            document.body.style.backgroundColor = 'white'; // Изменить фон, чтобы было видно, что скример закрыт
+        };
+    </script>
+</body>
+</html>
